@@ -1,6 +1,10 @@
 import javafx.application.Application;
+import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.geometry.Orientation;
 import javafx.scene.Scene;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ScrollBar;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
@@ -33,9 +37,19 @@ public class Main extends Application {
         scrollOpacity.setValue(10);
         scrollOpacity.setTranslateX(140);
 
-        Rectangle rect = new Rectangle(100, 100, Color.GREEN);
+        ChoiceBox choiceBox = new ChoiceBox();
+        choiceBox.setItems(FXCollections.observableArrayList(
+                "Red", "Green", "Yellow", "Blue", "Black"
+        ));
+        choiceBox.setTranslateX(260);
+
+        Color[] colors = new Color[]{Color.RED, Color.GREEN, Color.YELLOW, Color.BLUE, Color.BLACK};
+
+        Rectangle rect = new Rectangle(100, 100, Color.AZURE);
         rect.setTranslateX(20);
         rect.setTranslateY(20);
+
+
 
         scrollX.valueProperty().addListener(event -> {
             rect.setTranslateX(20 + scrollX.getValue());
@@ -49,8 +63,15 @@ public class Main extends Application {
             rect.setOpacity(scrollOpacity.getValue()/10);
         });
 
+        // смена цвета
+        choiceBox.getSelectionModel().selectedIndexProperty().addListener(
+                (ObservableValue<? extends Number> ov, Number old_val, Number new_val) -> {
+                    rect.setFill(colors[new_val.intValue()]);
+                }
+        );
+
         // добавляем элементы на панель
-        root.getChildren().addAll(scrollX, scrollY, scrollOpacity, rect);
+        root.getChildren().addAll(scrollX, scrollY, scrollOpacity, rect, choiceBox);
 
         primaryStage.setTitle("ScrollBar");
         primaryStage.setScene(new Scene(root, 450, 450));

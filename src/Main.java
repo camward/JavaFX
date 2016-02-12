@@ -1,7 +1,6 @@
 import javafx.application.Application;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.geometry.Orientation;
 import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
@@ -39,13 +38,13 @@ public class Main extends Application {
 
         ChoiceBox choiceBox = new ChoiceBox();
         choiceBox.setItems(FXCollections.observableArrayList(
-                "Red", "Green", "Yellow", "Blue", "Black"
+                "Red", "Green", "Blue"
         ));
         choiceBox.setTranslateX(260);
 
-        Color[] colors = new Color[]{Color.RED, Color.GREEN, Color.YELLOW, Color.BLUE, Color.BLACK};
+        Color[] colors = new Color[]{Color.RED, Color.GREEN, Color.BLUE};
 
-        Rectangle rect = new Rectangle(100, 100, Color.AZURE);
+        Rectangle rect = new Rectangle(100, 100, Color.BLACK);
         rect.setTranslateX(20);
         rect.setTranslateY(20);
 

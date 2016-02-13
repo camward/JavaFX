@@ -1,3 +1,4 @@
+import javafx.animation.FillTransition;
 import javafx.animation.RotateTransition;
 import javafx.animation.ScaleTransition;
 import javafx.animation.StrokeTransition;
@@ -32,10 +33,15 @@ public class Rotate extends Application{
             st.setToY(2);
             st.play();
 
-            StrokeTransition stroken = new StrokeTransition(Duration.seconds(1), rectangle);
-            stroken.setFromValue(Color.BLACK);
-            stroken.setToValue(Color.BLUE);
-            stroken.play();
+            StrokeTransition borderColor = new StrokeTransition(Duration.seconds(1), rectangle);
+            borderColor.setFromValue(Color.BLACK);
+            borderColor.setToValue(Color.BLUE);
+            borderColor.play();
+
+            FillTransition ft = new FillTransition(Duration.seconds(1), rectangle);
+            ft.setFromValue(Color.GREEN);
+            ft.setToValue(Color.RED);
+            ft.play();
         });
 
         root.getChildren().addAll(rectangle);

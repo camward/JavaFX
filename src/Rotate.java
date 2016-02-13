@@ -1,4 +1,5 @@
 import javafx.animation.RotateTransition;
+import javafx.animation.ScaleTransition;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.layout.GridPane;
@@ -19,9 +20,14 @@ public class Rotate extends Application{
         rectangle.setOnMouseClicked(event -> {
             RotateTransition rt = new RotateTransition(Duration.seconds(1), rectangle);
             rt.setByAngle(180);
-            rt.setCycleCount(2);
+            rt.setCycleCount(1);
             rt.setAutoReverse(true);
             rt.play();
+
+            ScaleTransition st = new ScaleTransition(Duration.seconds(1), rectangle);
+            st.setToX(2);
+            st.setToY(2);
+            st.play();
         });
 
         root.getChildren().addAll(rectangle);

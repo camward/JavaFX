@@ -28,17 +28,17 @@ public class Animate extends Application {
 
         list.getSelectionModel().selectedIndexProperty().addListener(
                 (ov, old_val, new_val) -> {
-                    FadeTransition ft = new FadeTransition(Duration.seconds(0.5), rectangle);
+                    FadeTransition ft = new FadeTransition(Duration.seconds(1), rectangle);
                     if(old_val == null) ft.setFromValue(1);
                     else ft.setFromValue(old_val.doubleValue());
-                    ft.setFromValue(new_val.doubleValue());
+                    ft.setToValue(new_val.doubleValue());
                     ft.play();
                 }
         );
 
-        root.getChildren().addAll(list,rectangle);
-        primaryStage.setTitle("Animate");
-        primaryStage.setScene(new Scene(root, 400, 400));
+        root.getChildren().addAll(list, rectangle);
+        Scene scene = new Scene(root, 400, 400);
+        primaryStage.setScene(scene);
         primaryStage.show();
     }
 

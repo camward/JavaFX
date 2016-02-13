@@ -49,7 +49,6 @@ public class Main extends Application {
         rect.setTranslateY(20);
 
 
-
         scrollX.valueProperty().addListener(event -> {
             rect.setTranslateX(20 + scrollX.getValue());
         });

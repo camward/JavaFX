@@ -1,5 +1,6 @@
 import javafx.animation.RotateTransition;
 import javafx.animation.ScaleTransition;
+import javafx.animation.StrokeTransition;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.layout.GridPane;
@@ -16,6 +17,8 @@ public class Rotate extends Application{
         Rectangle rectangle = new Rectangle(100, 100, Color.GREEN);
         rectangle.setTranslateX(100);
         rectangle.setTranslateY(100);
+        rectangle.setStroke(Color.BLACK);
+        rectangle.setStrokeWidth(3);
 
         rectangle.setOnMouseClicked(event -> {
             RotateTransition rt = new RotateTransition(Duration.seconds(1), rectangle);
@@ -28,6 +31,11 @@ public class Rotate extends Application{
             st.setToX(2);
             st.setToY(2);
             st.play();
+
+            StrokeTransition stroken = new StrokeTransition(Duration.seconds(1), rectangle);
+            stroken.setFromValue(Color.BLACK);
+            stroken.setToValue(Color.BLUE);
+            stroken.play();
         });
 
         root.getChildren().addAll(rectangle);
